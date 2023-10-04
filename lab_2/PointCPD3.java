@@ -1,4 +1,4 @@
-public class PointCPD3 extends PointCP{
+public class PointCPD3 extends PointCPD5{
 
 
     /**
@@ -29,6 +29,16 @@ public class PointCPD3 extends PointCP{
     @Override
     public double getTheta() {
         return Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
+    }
+
+    @Override
+    public PointCPD5 convertStorageToPolar() {
+        return new PointCPD2(getRho(),getTheta());
+    }
+
+    @Override
+    public PointCPD5 convertStorageToCartesian() {
+        return new PointCPD3(getX(),getY());
     }
 
     @Override

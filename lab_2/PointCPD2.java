@@ -1,4 +1,4 @@
-public class PointCPD2 extends PointCP{
+public class PointCPD2 extends PointCPD5{
     PointCPD2(double xOrRho, double yOrTheta){
         super( xOrRho, yOrTheta);
 
@@ -22,6 +22,16 @@ public class PointCPD2 extends PointCP{
     @Override
     public double getTheta() {
         return yOrTheta;
+    }
+
+    @Override
+    public PointCPD5 convertStorageToPolar() {
+        return new PointCPD2(getRho(),getTheta());
+    }
+
+    @Override
+    public PointCPD5 convertStorageToCartesian() {
+        return new PointCPD3(getX(),getY());
     }
 
     @Override
