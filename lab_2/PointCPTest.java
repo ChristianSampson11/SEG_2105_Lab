@@ -73,9 +73,9 @@ public class PointCPTest
       }
     }
     System.out.println("\nYou entered:\n" + point);
-    point.convertStorageToCartesian();
+    point = point.convertStorageToCartesian();
     System.out.println("\nAfter asking to store as Cartesian:\n" + point);
-    point.convertStorageToPolar();
+    point = point.convertStorageToPolar();
     System.out.println("\nAfter asking to store as Polar:\n" + point);
   }
 
@@ -116,8 +116,7 @@ public class PointCPTest
         else // Second and third arguments
         {
           System.out.print("Enter the value of " 
-            + (coordType == 'C' 
-              ? (i == 1 ? "X " : "Y ")
+            + (coordType == 'C' ? (i == 1 ? "X " : "Y ")
               : (i == 1 ? "Rho " : "Theta ")) 
             + "using a decimal point(.): ");
         }
@@ -167,10 +166,10 @@ public class PointCPTest
       isOK = false;
     }
     //Return a new PointCP object
-    if(theInput.toUpperCase().charAt(0) == 'C'){
+    if(coordType == 'C'){
       return new PointCPD3(a,b);
   }
-    else if (theInput.toUpperCase().charAt(0) == 'P'){
+    else if (coordType== 'P'){
       return (new PointCPD2(a, b));
     }
     return null;
