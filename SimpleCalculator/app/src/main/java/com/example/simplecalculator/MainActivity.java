@@ -85,6 +85,15 @@ public class MainActivity extends AppCompatActivity {
        if(pressID == R.id.buttonPlus){
            resultText.setText(resultText.getText() + "+");
        }
+       else if(pressID == R.id.buttonMinus){
+           resultText.setText(resultText.getText()+"-");
+       }
+       else if(pressID == R.id.buttonMul){
+           resultText.setText(resultText.getText()+"x");
+       }
+       else if(pressID == R.id.buttonDiv){
+           resultText.setText(resultText.getText()+"/");
+       }
     }
 
 }
