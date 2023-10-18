@@ -1,4 +1,5 @@
-package com.example.simplecalculator;//package com.uottawa.eecs.simplecalculator;
+package com.example.simplecalculator;
+//package com.uottawa.eecs.simplecalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +13,11 @@ public class MainActivity extends AppCompatActivity {
     private enum Operator {none, add, sub, mul, div, eq}
 
     private double data01=0, data02 = 0;
+    private boolean addition = false;
+    private boolean subtraction = false;
+    private boolean multiplication = false;
+    private boolean division = false;
+
 
     private Operator opp = Operator.none;
 
@@ -82,17 +88,64 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickFunctionButton(View view) {
        int pressID  = view.getId();
+
+
        if(pressID == R.id.buttonPlus){
-           resultText.setText(resultText.getText() + "+");
+           data01 = Double.parseDouble(resultText.getText().toString());
+           resultText.setText("");
+           addition = true;
+           subtraction = false;
+           multiplication = false;
+           division = false;
        }
        else if(pressID == R.id.buttonMinus){
-           resultText.setText(resultText.getText()+"-");
+           data01 = Double.parseDouble(resultText.getText().toString());
+           resultText.setText("");
+           addition = false;
+           subtraction = true;
+           multiplication = false;
+           division = false;
        }
        else if(pressID == R.id.buttonMul){
-           resultText.setText(resultText.getText()+"x");
+           data01 = Double.parseDouble(resultText.getText().toString());
+           resultText.setText("");
+           addition = false;
+           subtraction = false;
+           multiplication = true;
+           division = false;
        }
        else if(pressID == R.id.buttonDiv){
-           resultText.setText(resultText.getText()+"/");
+           data01 = Double.parseDouble(resultText.getText().toString());
+           resultText.setText("");
+           addition = false;
+           subtraction = false;
+           multiplication = false;
+           division = true;
+       } else if (pressID == R.id.buttonEq) {
+           data02 = Double.parseDouble(resultText.getText().toString());
+           if(addition){
+               double sum = data01 + data02;
+               resultText.setText(String.valueOf(sum));
+           } else if (subtraction) {
+               double difference = data01 - data02;
+               resultText.setText(String.valueOf(difference));
+
+           }
+           else if(multiplication){
+               double product = data01 * data02;
+               resultText.setText(String.valueOf(product));
+           } else if (division) {
+               if(data02 == 0){
+                   resultText.setText("Math Error");
+               }
+               else{
+                   double quotient = data01/data02;
+                   resultText.setText(String.valueOf(quotient));
+               }
+           }
+           else{
+               resultText.setText("Error");
+           }
        }
     }
 
